@@ -1,93 +1,212 @@
-# ni2025
+# 🏰 Le Village Numérique Résistant
 
+> **Mini-jeu "Choisis ta voie"** - Nuit de l'Info 2025
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Made with React](https://img.shields.io/badge/Made%20with-React-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-## Getting started
+---
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 📖 À propos du projet
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+**Le Village Numérique Résistant** est une application web gamifiée créée pour la **Nuit de l'Info 2025**.
 
-## Add your files
+Le projet illustre le thème : *"Comment les établissements scolaires peuvent tenir tête aux Big Tech ?"*
+🎯 **David contre Goliath · Astérix contre l'Empire numérique**
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+### 🎮 Concept du jeu
+
+À travers **8 situations concrètes**, le joueur fait des choix qui impactent 3 scores :
+- 🔗 **Dépendance** aux Big Tech
+- 🌱 **Écologie** & sobriété numérique
+- 💪 **Autonomie** NIRD (Numérique Inclusif, Responsable et Durable)
+
+À la fin, le joueur obtient :
+- Un **profil personnalisé** (Dépendant / En Transition / Résistant NIRD)
+- **3 conseils** adaptés pour progresser
+- Un lien vers les ressources NIRD
+
+---
+
+## 🚀 Installation et lancement
+
+### Prérequis
+- **Node.js** >= 18.x
+- **npm** >= 9.x
+
+### Installation
+
+```bash
+# Cloner le projet
+git clone https://git.unistra.fr/coma-ethylix/ni2025.git
+cd ni2025
+
+# Installer les dépendances
+npm install
+
+# Lancer le serveur de développement
+npm run dev
+```
+
+L'application sera accessible sur **http://localhost:5173**
+
+### Build de production
+
+```bash
+npm run build
+```
+
+Les fichiers compilés seront dans le dossier `dist/`
+
+### Prévisualiser le build
+
+```bash
+npm run preview
+```
+
+---
+
+## 🛠️ Technologies utilisées
+
+- **React 18** - Interface utilisateur
+- **TypeScript** - Typage statique
+- **Vite** - Build tool ultra-rapide
+- **TanStack Router** - Routing moderne
+- **Zustand** - Gestion d'état légère
+- **TailwindCSS** - Styles utilitaires
+- **PostCSS** - Transformation CSS
+
+---
+
+## 📁 Structure du projet
 
 ```
-cd existing_repo
-git remote add origin https://git.unistra.fr/coma-ethylix/ni2025.git
-git branch -M main
-git push -uf origin main
+src/
+├── components/       # Composants réutilisables
+├── routes/          # Pages de l'application
+│   ├── __root.tsx          # Route racine
+│   ├── index.lazy.tsx      # Page d'accueil
+│   ├── game.lazy.tsx       # Page du jeu
+│   └── result.lazy.tsx     # Page des résultats
+├── data/
+│   └── steps.ts     # Questions, choix et profils
+├── store/
+│   └── gameStore.ts # Gestion des scores (Zustand)
+├── styles/
+│   └── globals.css  # Styles globaux + animations
+├── main.tsx         # Point d'entrée
+└── routeTree.gen.ts # Routes générées automatiquement
 ```
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://git.unistra.fr/coma-ethylix/ni2025/-/settings/integrations)
+## 🎯 La démarche NIRD
 
-## Collaborate with your team
+**NIRD** signifie **Numérique Inclusif, Responsable et Durable**.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### 3 piliers fondamentaux :
+1. **Inclusion** - Accessible à tous
+2. **Responsabilité** - Éthique et souverain
+3. **Durabilité** - Écologique et pérenne
 
-## Test and Deploy
+### Actions concrètes :
+- ♻️ Réemploi et reconditionnement du matériel
+- 🐧 Promotion de Linux et logiciels libres
+- 🇪🇺 Hébergement souverain (UE)
+- 🤝 Mutualisation via la [Forge des Communs Numériques Éducatifs](https://forge.apps.education.fr)
+- 📚 Sensibilisation à la sobriété numérique
 
-Use the built-in continuous integration in GitLab.
+---
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+## 🎮 Comment jouer ?
 
-***
+1. **Accueil** : Présentation du concept
+2. **8 Questions** : Situations concrètes avec 2 choix chacune
+3. **Résultats** : Profil personnalisé + conseils adaptés
+4. **Rejouer** : Tester d'autres stratégies
 
-# Editing this README
+---
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## 🌟 Fonctionnalités
 
-## Suggestions for a good README
+- ✅ Interface responsive (mobile, tablette, desktop)
+- ✅ Animations fluides (fade, slide)
+- ✅ Barre de progression
+- ✅ Calcul dynamique du profil
+- ✅ Conseils personnalisés
+- ✅ Design moderne avec TailwindCSS
+- ✅ Code 100% TypeScript
+- ✅ Routing avec TanStack Router
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+---
 
-## Name
-Choose a self-explaining name for your project.
+## 📜 Licence
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Licence MIT
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+```
+MIT License
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Copyright (c) 2025 Équipe Nuit de l'Info 2025
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+---
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## 👥 Équipe
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Projet réalisé par **Coma-Ethylix** pour la **Nuit de l'Info 2025**.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+---
 
-## License
-For open source projects, say how it is licensed.
+## 🔗 Liens utiles
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- [Forge des Communs Numériques Éducatifs](https://forge.apps.education.fr)
+- [La Nuit de l'Info](https://www.nuitdelinfo.com/)
+- [Démarche NIRD](https://forge.apps.education.fr)
+- [React Documentation](https://react.dev/)
+- [TanStack Router](https://tanstack.com/router)
+- [TailwindCSS](https://tailwindcss.com/)
+
+---
+
+## 🙏 Remerciements
+
+- La **Nuit de l'Info** pour ce sujet engagé
+- La communauté **NIRD** pour son engagement
+- Les contributeurs de **React**, **Vite**, **TanStack Router** et **TailwindCSS**
+
+---
+
+## 📞 Support
+
+Pour toute question ou suggestion :
+- Ouvrir une [issue](https://git.unistra.fr/coma-ethylix/ni2025/-/issues)
+- Contacter l'équipe via GitLab
+
+---
+
+**Fait avec ❤️ pour un numérique plus libre, éthique et durable**
+
+*Nuit de l'Info 2025 · Numérique Inclusif, Responsable et Durable*
