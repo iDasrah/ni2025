@@ -10,6 +10,7 @@ interface GameState {
   };
   applyChoice: (effect: ScoreEffect) => void;
   nextStep: () => void;
+  gotoStep: (step: number) => void;
   reset: () => void;
   getProfile: () => 'dependent' | 'transition' | 'resistant';
 }
@@ -36,6 +37,10 @@ export const useGameStore = create<GameState>((set, get) => ({
     set((state) => ({
       currentStep: state.currentStep + 1,
     }));
+  },
+
+  gotoStep: (step: number) => {
+    set({ currentStep: step });
   },
 
   reset: () => {

@@ -18,6 +18,35 @@
   }
 }
 
+@layer components {
+  /* Backgrounds "personnalité" pour les cartes */
+  .bg-personality-calm {
+    background: linear-gradient(135deg, rgba(236,72,153,0.08), rgba(99,102,241,0.06));
+  }
+
+  .bg-personality-energetic {
+    background: conic-gradient(from 180deg at 50% 50%, rgba(251,191,36,0.12), rgba(34,197,94,0.08), rgba(59,130,246,0.12));
+  }
+
+  .bg-personality-dark {
+    background: linear-gradient(180deg, rgba(17,24,39,0.88), rgba(15,23,42,0.72));
+    color: #e5e7eb;
+  }
+
+  .bg-personality-fun {
+    background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(139,92,246,0.08));
+  }
+
+  .bg-personality-serpent {
+    background: radial-gradient(circle at 10% 10%, rgba(34,197,94,0.12), transparent 18%), linear-gradient(180deg, rgba(6,95,70,0.04), rgba(99,102,241,0.04));
+  }
+
+  /* Small helper for selected button */
+  .personality-selected {
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.12), 0 4px 12px rgba(2,6,23,0.08);
+  }
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -37,3 +66,14 @@
     transform: translateY(0);
   }
 }
+
+/* Fallback raw definitions (hors @layer) pour s'assurer que les classes existent
+   Certains pipelines Tailwind/PostCSS peuvent ne pas intégrer correctement
+   les règles dans @layer selon la configuration — ces définitions garantissent
+   qu'on a un style testable immédiatement. */
+.bg-personality-calm { background: linear-gradient(135deg, rgba(236,72,153,0.08), rgba(99,102,241,0.06)) !important; }
+.bg-personality-energetic { background: conic-gradient(from 180deg at 50% 50%, rgba(251,191,36,0.12), rgba(34,197,94,0.08), rgba(59,130,246,0.12)) !important; }
+.bg-personality-dark { background: linear-gradient(180deg, rgba(17,24,39,0.88), rgba(15,23,42,0.72)) !important; color: #e5e7eb !important; }
+.bg-personality-fun { background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(139,92,246,0.08)) !important; }
+.bg-personality-serpent { background: radial-gradient(circle at 10% 10%, rgba(34,197,94,0.12), transparent 18%), linear-gradient(180deg, rgba(6,95,70,0.04), rgba(99,102,241,0.04)) !important; }
+.personality-selected { box-shadow: 0 0 0 3px rgba(99,102,241,0.12), 0 4px 12px rgba(2,6,23,0.08) !important; }
