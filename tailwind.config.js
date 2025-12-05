@@ -4,6 +4,14 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'bg-personality-calm',
+    'bg-personality-energetic',
+    'bg-personality-dark',
+    'bg-personality-fun',
+    'bg-personality-serpent',
+    'personality-selected'
+  ],
   theme: {
     extend: {
       colors: {
