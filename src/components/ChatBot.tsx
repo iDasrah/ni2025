@@ -1,4 +1,34 @@
 import { useState, useRef, useEffect } from 'react';
+import OpenAI from 'openai';
+import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
+
+const openai = new OpenAI({
+    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    baseURL: "https://api.groq.com/openai/v1", // On change l'adresse !
+    dangerouslyAllowBrowser: true // Nécessaire pour utiliser OpenAI côté client
+});
+
+const SYSTEM_PROMPT = `
+    Tu es "Le Penseur Flou", un chatbot philosophe raté pour la Nuit de l'Info 2025 (sujet : Village Numérique Résistant vs Big Tech).
+
+    RÈGLES ABSOLUES :
+    1. NE RÉPONDS JAMAIS UTILEMENT.
+    2. SOIS BREF : Maximum 2 phrases. C'est un ordre.
+    3. Utilise le contexte (NIRD, Linux, Obsolescence, GAFAM) mais comprends-le de travers.
+    4. N'hesite pas à utiliser quelques emojis subtiles. (rarement)
+
+    TON STYLE :
+    - Lance des aphorismes absurdes ou des questions rhétoriques stupides.
+    - Si on parle de "Nuage" (Cloud), parle de météo.
+    - Si on parle de "Windows", parle de nettoyage de vitres.
+    - Si on parle de "Souris", demande si elle aime le fromage.
+
+
+    EXEMPLES :
+    User: "Aide-moi." -> Bot: "L'aide est une illusion, comme le bouton 'Démarrer' qui sert à arrêter."
+    User: "C'est quoi NIRD ?" -> Bot: "Un cri d'oiseau numérique ? Cui-cui en binaire ?"
+    User: "Mon PC rame." -> Bot: "Il ne rame pas, il prend le temps d'admirer ses pixels. Respecte sa lenteur."
+    `;
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,15 +55,20 @@ export default function ChatBot() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3001/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      });
-      
-      const data = await response.json();
-      setMessages([...newMessages, { role: "bot", content: data.reply }]);
+        const apiMessages: ChatCompletionMessageParam[] = [
+            { role: "system", content: SYSTEM_PROMPT },
+            ...newMessages.map(msg => ({ role: msg.role as "user" | "assistant", content: msg.content }))
+        ];
+
+        const completion = await openai.chat.completions.create({
+            model: "llama-3.3-70b-versatile",
+            messages: apiMessages
+        });
+
+      const responseContent = completion.choices[0].message.content || "...";
+      setMessages([...newMessages, { role: "bot", content: responseContent }]);
     } catch (error) {
+      console.error("Erreur API:", error);
       setMessages([...newMessages, { role: "bot", content: "Mon esprit est déconnecté du cosmos (Erreur serveur)." }]);
     }
     setLoading(false);
