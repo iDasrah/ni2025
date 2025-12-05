@@ -192,7 +192,7 @@ function Game() {
           {/* small clickable snake when the text mentions 'serpent' */}
           {showSnake && (
             <button
-              onClick={() => navigate({ to: '/snack' as any })}
+              onClick={() => navigate({ to: '/snake' as any })}
               aria-label="Voir le serpent"
               className="absolute top-4 right-4 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/60 rounded-full backdrop-blur-sm hover:scale-105 transition-transform"
             >
