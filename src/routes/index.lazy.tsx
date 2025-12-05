@@ -1,4 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
+import ChatBot from './ChatBot'
 
 export const Route = createLazyFileRoute('/')({
   component: Index,
@@ -112,6 +113,7 @@ function Index() {
           <p className="mt-2">Démarche NIRD · Forge des Communs Numériques Éducatifs</p>
         </div>
       </div>
+      <ChatBot />
     </div>
   )
 }
