@@ -64,8 +64,8 @@ export default function ChatBot() {
                 🧐
               </div>
               <div>
-                <h3 className="font-bold text-white text-lg leading-tight">Le Penseur Flou</h3>
-                <p className="text-blue-100 text-xs opacity-90">Philosophe inutile</p>
+                <h3 className="font-bold text-white text-lg leading-tight">NIRDespéré</h3>
+                <p className="text-blue-100 text-xs opacity-90">Assistant IA</p>
               </div>
             </div>
             <button 
