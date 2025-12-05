@@ -1,6 +1,6 @@
-import { useNavigate, createFileRoute } from '@tanstack/react-router'
+import { useNavigate, createLazyFileRoute } from '@tanstack/react-router'
 import { useState, FormEvent } from 'react'
-import Navbar from './Navbar'
+import Navbar from '../components/Navbar'
 
 // --- 1. DÉFINITION DU COMPOSANT D'ABORD (Pour éviter l'erreur TS7022) ---
 
@@ -30,12 +30,12 @@ function Portal() {
       setIsSubmitting(false)
       
       // 🚀 Redirection vers l'Écho de Gratitude avec les infos
-      navigate({ 
-        to: '/Thanks', 
-        search: { 
-          name: name || 'Ami du Libre', 
-          mission: mission              
-        } 
+      navigate({
+        to: '/thanks',
+        search: {
+          name: name || 'Ami du Libre',
+          mission: mission
+        }
       })
       
     }, 1500)
@@ -204,7 +204,7 @@ function Portal() {
 
 // --- 2. DÉFINITION DE LA ROUTE EN DERNIER ---
 
-export const Route = createFileRoute('/Portal')({
+export const Route = createLazyFileRoute('/portal')({
   component: Portal,
 })
 

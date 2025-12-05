@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import Navbar from './Navbar' // Vérifie que c'est bien ../components/Navbar
-import ChatBot from './ChatBot' // Vérifie que c'est bien le bon chemin
+import Navbar from '../components/Navbar'
+import ChatBot from '../components/ChatBot'
 
 export const Route = createLazyFileRoute('/')({
   component: Index,

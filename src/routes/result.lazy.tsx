@@ -1,8 +1,8 @@
 import { createLazyFileRoute, useNavigate } from '@tanstack/react-router'
 import { useGameStore } from '../store/gameStore'
 import { profiles } from '../data/steps'
-import ChatBot from './ChatBot'   // Vérifie que le chemin est bon (ex: ../components/ChatBot)
-import Navbar from './Navbar' // Vérifie que le chemin est bon
+import ChatBot from '../components/ChatBot'
+import Navbar from '../components/Navbar'
 
 export const Route = createLazyFileRoute('/result')({
   component: Result,
@@ -127,7 +127,7 @@ function Result() {
             
             {/* 🚪 BOUTON 1 : VERS LE PORTAIL */}
             <button
-              onClick={() => navigate({ to: '/Portal' })}
+              onClick={() => navigate({ to: '/portal' })}
               className="w-full bg-white border-2 border-nird-purple text-nird-purple px-6 py-4 rounded-xl text-lg font-bold hover:bg-nird-purple hover:text-white hover:shadow-lg transition-all transform hover:-translate-y-1 group"
             >
               🚪 Passer à l'action <span className="text-sm font-normal opacity-80 group-hover:text-white">(Portail d'Intention)</span>

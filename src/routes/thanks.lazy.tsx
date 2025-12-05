@@ -1,26 +1,15 @@
-import { Link, createFileRoute } from '@tanstack/react-router'
-import Navbar from './Navbar'
+import { Link, createLazyFileRoute, useSearch } from '@tanstack/react-router'
+import Navbar from '../components/Navbar'
 
-// On définit ce qu'on attend dans l'URL (ex: /thanks?name=Julot&mission=don)
-type ThanksSearch = {
-  name: string
-  mission: 'contact' | 'don' | 'benevole' | 'info'
-}
-
-export const Route = createFileRoute('/Thanks')({
+export const Route = createLazyFileRoute('/thanks')({
   component: Thanks,
-  // Validation des paramètres d'URL pour éviter les erreurs
-  validateSearch: (search: Record<string, unknown>): ThanksSearch => {
-    return {
-      name: (search.name as string) || 'Voyageur Inconnu',
-      mission: (search.mission as 'contact' | 'don' | 'benevole' | 'info') || 'contact',
-    }
-  },
 })
 
 function Thanks() {
-  // 1. Récupération des infos de l'URL
-  const { name, mission } = Route.useSearch()
+  // 1. Récupération des infos de l'URL avec valeurs par défaut
+  const search = useSearch({ from: '/thanks' }) as any
+  const name = (search?.name as string) || 'Voyageur Inconnu'
+  const mission = (search?.mission as 'contact' | 'don' | 'benevole' | 'info') || 'contact'
   
   // 2. Le Filtre Temporel ⏳ (Date Dynamique)
   const currentYear = new Date().getFullYear()

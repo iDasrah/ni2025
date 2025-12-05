@@ -3,7 +3,7 @@ import { useState } from 'react'
 import FullPageBackground from '../components/FullPageBackground'
 import { useGameStore } from '../store/gameStore'
 import { steps } from '../data/steps'
-import ChatBot from './ChatBot'
+import ChatBot from '../components/ChatBot'
 
 export const Route = createLazyFileRoute('/game')({
   component: Game,

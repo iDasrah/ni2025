@@ -1,7 +1,7 @@
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
-import { useState, useEffect, useCallback, useRef } from 'react'
-import Navbar from './Navbar'
-import ChatBot from './ChatBot'
+import { useState, useEffect, useRef } from 'react'
+import Navbar from '../components/Navbar'
+import ChatBot from '../components/ChatBot'
 
 export const Route = createLazyFileRoute('/snake')({
   component: SnakeGame,
@@ -9,7 +9,6 @@ export const Route = createLazyFileRoute('/snake')({
 
 // --- CONFIGURATION ---
 const GRID_SIZE = 20
-const CELL_SIZE = 20 // Taille relative pour le rendu CSS
 const SPEED = 150 // ms entre chaque mouvement (plus c'est bas, plus c'est rapide)
 
 type Point = { x: number; y: number }
@@ -19,7 +18,6 @@ function SnakeGame() {
   // États du jeu
   const [snake, setSnake] = useState<Point[]>([{ x: 10, y: 10 }])
   const [food, setFood] = useState<Point>({ x: 15, y: 5 })
-  const [direction, setDirection] = useState<Direction>('RIGHT')
   const [isGameOver, setIsGameOver] = useState(false)
   const [isPaused, setIsPaused] = useState(false)
   const [score, setScore] = useState(0)
@@ -33,7 +31,6 @@ function SnakeGame() {
   const initGame = () => {
     setSnake([{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }])
     setFood(generateFood())
-    setDirection('RIGHT')
     directionRef.current = 'RIGHT'
     setScore(0)
     setIsGameOver(false)
@@ -84,9 +81,6 @@ function SnakeGame() {
       setSnake((prevSnake) => {
         const head = prevSnake[0]
         const newHead = { ...head }
-
-        // Mise à jour de la direction pour le render
-        setDirection(directionRef.current)
 
         switch (directionRef.current) {
           case 'UP': newHead.y -= 1; break
