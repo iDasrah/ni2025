@@ -57,7 +57,7 @@ export default function ChatBot() {
     try {
         const apiMessages: ChatCompletionMessageParam[] = [
             { role: "system", content: SYSTEM_PROMPT },
-            ...newMessages.map(msg => ({ role: msg.role as "user" | "assistant", content: msg.content }))
+            ...newMessages.map(msg => ({ role: msg.role as "user", content: msg.content }))
         ];
 
         const completion = await openai.chat.completions.create({
