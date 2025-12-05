@@ -109,7 +109,6 @@ function Index() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Un projet open source · Licence MIT</p>
           <p className="mt-2">Démarche NIRD · Forge des Communs Numériques Éducatifs</p>
         </div>
       </div>
