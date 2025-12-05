@@ -2,3 +2,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[build]
+  publish = "dist"  # ou "build" selon ton bundler
+  command = "npm run build"
