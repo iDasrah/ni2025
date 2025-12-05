@@ -2,6 +2,7 @@ import { createLazyFileRoute, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import { useGameStore } from '../store/gameStore'
 import { steps } from '../data/steps'
+import ChatBot from './ChatBot'
 
 export const Route = createLazyFileRoute('/game')({
   component: Game,
@@ -92,6 +93,7 @@ function Game() {
           </div>
         )}
       </div>
+      <ChatBot />
     </div>
   )
 }
